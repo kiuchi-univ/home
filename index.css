@@ -1,0 +1,428 @@
+@charset "UTF-8";
+
+/* =========================================
+   Base & Reset
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: #333;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   Variables (テーマカラーなど)
+========================================= */
+:root {
+    --primary-green: #b8e0b0; /* プレースホルダーの緑 */
+    --light-gray: #f2f4f6;    /* テキストエリアの背景 */
+    --border-color: #e0e0e0;
+}
+
+/* =========================================
+   Header
+========================================= */
+.header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.logo-text .en {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.global-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.global-nav a {
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+/* モダンなホバー下線エフェクト */
+.global-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #333;
+    transition: width 0.3s ease;
+}
+
+.global-nav a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   Placeholders (写真が入る場所)
+========================================= */
+.placeholder-box {
+    background-color: var(--primary-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.placeholder-box .number {
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* 各プレースホルダーの固有設定 */
+.placeholder-1 {
+    width: 50px;
+    height: 50px;
+}
+
+.placeholder-2 {
+    width: 100%;
+    height: 50vh; /* 画面の高さの半分 */
+    min-height: 300px;
+}
+
+/* =========================================
+   Home Section (メインコンテンツ)
+========================================= */
+.home-section,.news-section,.access-section {
+    padding: 60px 20px;
+}
+
+.section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+/* =========================================
+   Cards Layout
+========================================= */
+.cards-container {
+    display: flex;
+    gap: 30px;
+}
+
+.card {
+    flex: 1;
+    display: flex;
+    background-color: var(--light-gray);
+    border-radius: 8px; /* モダンな丸み */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* さりげない影 */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* ホバーで少し浮く */
+}
+
+.card-image {
+    width: 50%;
+    min-height: 250px;
+}
+
+.card-content {
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* ワイヤーフレーム風のダミーテキスト線 */
+.dummy-text p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #999;
+    margin-left: 10px;
+}
+
+.line-full {
+    width: 100%;
+    height: 1px;
+    background-color: #999;
+}
+
+/* =========================================
+   Footer
+========================================= */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #666;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* =========================================
+   Responsive (スマホ用アレンジ)
+========================================= */
+@media screen and (max-width: 768px) {
+    /* ヘッダーの縦積み */
+    .header-inner {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .global-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .global-nav a {
+        font-size: 0.85rem;
+    }
+
+    /* メインビジュアルの高さ調整 */
+    .placeholder-2 {
+        height: 30vh;
+        min-height: 200px;
+    }
+
+    /* セクションタイトルの中央寄せ */
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    /* カードの縦積み */
+    .cards-container {
+        flex-direction: column;
+    }
+
+    /* スマホでは画像とテキストを縦に並べる */
+    .card {
+        flex-direction: column;
+    }
+
+    .card-image {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .card-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+}
+
+/* =========================================
+   スムーズスクロールとヘッダー被り防止 (既存コードの上のほうに追加)
+========================================= */
+html {
+    scroll-behavior: smooth; /* スムーズスクロール */
+}
+
+section {
+    scroll-margin-top: 80px; /* ジャンプした際に固定ヘッダーの下に隠れないようにする余白 */
+    padding: 60px 20px;
+}
+
+/* =========================================
+   ハンバーガーメニュー (PCでは非表示)
+========================================= */
+.hamburger {
+    display: none;
+}
+
+/* =========================================
+   Responsive (スマホ用アレンジ：既存のメディアクエリをこちらに差し替えてください)
+========================================= */
+@media screen and (max-width: 768px) {
+    /* スマホでヘッダーをコンパクトにする */
+    .header-inner {
+        flex-direction: row; /* 横並びのまま */
+        justify-content: space-between;
+        padding: 10px 15px;
+    }
+    
+    /* ロゴと画像を小さくする */
+    .placeholder-1 {
+        width: 35px;
+        height: 35px;
+    }
+    .placeholder-1 .number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+    }
+    .logo-text h1 {
+        font-size: 1.1rem;
+    }
+    .logo-text .en {
+        font-size: 0.6rem;
+    }
+
+    /* ハンバーガーアイコンのスタイル */
+    .hamburger {
+        display: block;
+        width: 30px;
+        height: 22px;
+        position: relative;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 200; /* メニューより上に表示 */
+    }
+
+    .hamburger span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 10px; }
+    .hamburger span:nth-child(3) { bottom: 0; }
+
+    /* メニュー開閉時のアイコンアニメーション（×になる） */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* ナビゲーションメニューを全画面オーバーレイに変更 */
+    .global-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(248, 249, 250, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 150;
+    }
+
+    .global-nav.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .global-nav ul {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .global-nav a {
+        font-size: 1.3rem;
+    }
+
+    /* その他レイアウトのスマホ対応 */
+    .placeholder-2 {
+        height: 30vh;
+        min-height: 200px;
+    }
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+    }
+    .cards-container {
+        flex-direction: column;
+    }
+    .card {
+        flex-direction: column;
+    }
+    .card-image {
+        width: 100%;
+        min-height: 200px;
+    }
+    .card-content {
+        width: 100%;
+        padding: 20px;
+    }
+}

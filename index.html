@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木内大学 - Kiuchi University</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <div class="placeholder-box placeholder-1">
+                    <span class="number">1</span>
+                </div>
+                <div class="logo-text">
+                    <h1>木内大学</h1>
+                    <span class="en">Kiuchi University</span>
+                </div>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="global-nav" id="global-nav">
+                <ul>
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#news">ニュース</a></li>
+                    <li><a href="information.html">受験生の皆様へ</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="placeholder-box placeholder-2">
+                <span class="number">2</span>
+            </div>
+        </section>
+
+        <section class="home-section" id="home">
+            <div class="section-inner">
+                <h2 class="section-title">H O M E</h2>
+                <div class="cards-container">
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-3">
+                            <span class="number">3</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>特徴</h3>
+                            <div class="dummy-text">
+                                <p>文章<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-4">
+                            <span class="number">4</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>15学部 15学科</h3>
+                            <div class="dummy-text">
+                                <p>文章<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section" id="news">
+            <div class="section-inner">
+                <h2 class="section-title">N E W S</h2>
+                <div class="cards-container">
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-3">
+                            <span class="number">5</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>学長</h3>
+                            <div class="dummy-text">
+                                <p>１周年<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-4">
+                            <span class="number">6</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>附高祭に模擬店出展決定!(してない)</h3>
+                            <div class="dummy-text">
+                                <p>文章<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="access-section" id="access">
+            <div class="section-inner">
+                <h2 class="section-title">ACCESS</h2>
+                <div class="cards-container">
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-3">
+                            <span class="number">5</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>所在地</h3>
+                            <div class="dummy-text">
+                                <p>218-74291</p>
+                                <p>ランゲルハウス島1-85<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image placeholder-box placeholder-4">
+                            <span class="number">6</span>
+                        </div>
+                        <div class="card-content">
+                            <h3>N/A</h3>
+                            <div class="dummy-text">
+                                <p>文章<span class="line"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                                <p><span class="line-full"></span></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; Kiuchi University.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const globalNav = document.getElementById('global-nav');
+        const navLinks = document.querySelectorAll('.global-nav a');
+
+        // ハンバーガーアイコンのクリック処理
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            globalNav.classList.toggle('active');
+        });
+
+        // リンクをクリックしたらメニューを閉じる
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                globalNav.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
