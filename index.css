@@ -99,20 +99,18 @@ section {
 .logo-emblem {
     width: 44px;
     height: 44px;
-    background: transparent;
+    background: #faf9f6;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
-.logo-emblem svg {
-    width: 26px;
-    height: 26px;
-    fill: none;
-    stroke: var(--paper);
-    stroke-width: 1.5;
+.logo-emblem img {
+    background: transparent;
+    object-fit: contain; 
 }
 
 .logo-text-wrap {
