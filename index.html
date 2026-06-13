@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木内大学 — Kiuchi University</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+    <div class="header-inner">
+
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <div class="logo-emblem">
+                <img src="images/Logo.png" alt="木内大学">
+            </div>
+            <div class="logo-text-wrap">
+                <span class="logo-ja">木内大学</span>
+                <span class="logo-en">Kiuchi University</span>
+            </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="global-nav" id="global-nav">
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="news.html">ニュース</a></li>
+                <li><a href="#access">アクセス</a></li>
+                <li><a href="information.html" class="nav-cta">受験生の皆様へ</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ========== MOBILE NAV OVERLAY ========== -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+    <ul class="mobile-nav-list">
+        <li><a href="#home">ホーム <span>→</span></a></li>
+        <li><a href="news.html">ニュース <span>→</span></a></li>
+        <li><a href="#access">アクセス <span>→</span></a></li>
+        <li><a href="information.html">受験生の皆様へ <span>→</span></a></li>
+    </ul>
+    <p class="mobile-nav-footer">© Kiuchi University</p>
+</div>
+
+<main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <!-- Left: Visual -->
+        <div class="hero-visual">
+            <div class="hero-visual-placeholder">
+
+                <video src="images/Campas.mp4" autoplay loop muted playsinline width="100%">
+                    お使いのブラウザは動画タグをサポートしていません。
+                </video>
+            </div>
+            <span class="hero-visual-label">Est. Since</span>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="hero-content">
+            <p class="hero-eyebrow">Welcome</p>
+            <h1 class="hero-title">木内大学</h1>
+            <p class="hero-title-en">Kiuchi University</p>
+            <p class="hero-tagline">
+                知識と創造の拠点として、<br>
+                未来を拓く人材を育成します。<br>
+                15学部・15学科で多様な学びを。
+            </p>
+            <div class="hero-actions">
+                <a href="#home" class="btn-primary">大学を知る <span class="btn-arrow">→</span></a>
+                <a href="information.html" class="btn-secondary">受験生の方へ <span class="btn-arrow">→</span></a>
+                <a href="https://forms.gle/LneNkaXuGr7gcE9L6" class="btn-primary">☆HP改善の要望はこちらから☆ <span class="btn-arrow">→</span></a>
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="hero-scroll">
+                <span>Scroll</span>
+                <div class="hero-scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOME / FEATURES ========== -->
+    <section class="section-wrap" id="home">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Home</span>
+                <h2 class="section-title">H O M E</h2>
+                <div class="section-rule"></div>
+            </div>
+
+            <div class="feature-grid">
+                <!-- Card 1: 特徴 -->
+                <article class="feature-card">
+                    <div class="feature-img">
+                        <div class="feature-placeholder">Photo 03</div>
+                    </div>
+                    <div class="feature-body">
+                        <p class="feature-num">01</p>
+                        <h3 class="feature-title">特徴</h3>
+                        <p class="feature-desc">
+                            木内大学は、最先端の研究環境と豊かな人間教育を融合させ、
+                            社会の課題に挑む力を養います。国際的な視野と深い専門知識を
+                            兼ね備えた人材の育成が私たちの使命です。
+                        </p>
+                        <a href="#" class="feature-link">詳しく見る →</a>
+                    </div>
+                </article>
+
+                <!-- Card 2: 学部 -->
+                <article class="feature-card">
+                    <div class="feature-img">
+                        <div class="feature-placeholder">Photo 04</div>
+                    </div>
+                    <div class="feature-body">
+                        <p class="feature-num">02</p>
+                        <h3 class="feature-title">15学部 15学科</h3>
+                        <p class="feature-desc">
+                            文理融合・学際的なカリキュラムで、幅広い分野の学びを提供。
+                            各学部が連携し合い、複雑な現代社会の問題に対応できる
+                            総合的な知識と実践力を身につけることができます。
+                        </p>
+                        <a href="information.html" class="feature-link">学部一覧 →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NEWS ========== -->
+    <section class="section-wrap alt-bg" id="news">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Latest</span>
+                <h2 class="section-title">N E W S</h2>
+                <div class="section-rule"></div>
+            </div>
+
+            <div class="news-list">
+                <!-- News へのリンク -->
+                <article class="news-item">
+                    <div class="news-img-wrap">
+                        <div class="news-placeholder">Photo 05</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <time class="news-date">2026.05.01</time>
+                            <span class="news-tag">最近のニュース</span>
+                        </div>
+                        <h3 class="news-title">木内大学 創立１周年記念式典を開催</h3>
+                        <p class="news-excerpt">
+                            <a href="news.html" class="feature-link">より多くのニュースはこちらから → </a>
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACCESS ========== -->
+    <section class="section-wrap" id="access">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Location</span>
+                <h2 class="section-title">A C C E S S</h2>
+                <div class="section-rule"></div>
+            </div>
+
+            <div class="access-grid">
+                <!-- Map placeholder -->
+                <div class="access-map">
+                    <img src="images/Map.png" alt="アクセスマップ" class="map-image">
+                </div>
+
+                <!-- Info -->
+                <div>
+                    <h3 class="access-info-title">Campus Location</h3>
+
+                    <div class="access-row">
+                        <span class="access-label">所在地</span>
+                        <span class="access-value">〒218-74291<br>ランゲルハンス島 1-85</span>
+                    </div>
+
+                    <div class="access-row">
+                        <span class="access-label">電車</span>
+                        <span class="access-value">（路線情報をここに記載）</span>
+                    </div>
+
+                    <div class="access-row">
+                        <span class="access-label">バス</span>
+                        <span class="access-value">（バス情報をここに記載）</span>
+                    </div>
+
+                    <div class="access-row">
+                        <span class="access-label">お問合せ</span>
+                        <span class="access-value">（連絡先をここに記載）</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <!-- Brand -->
+            <div>
+                <p class="footer-logo-ja">木内大学</p>
+                <p class="footer-logo-en">Kiuchi University</p>
+                <p class="footer-tagline">知識と創造の拠点として、<br>未来を拓く人材を育成します。<br> <br>本ホームページには生成AIを使用しています。</p>
+            </div>
+
+            <!-- Nav -->
+            <div>
+                <p class="footer-nav-title">Navigation</p>
+                <ul class="footer-nav-list">
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="news.html">ニュース</a></li>
+                    <li><a href="#access">アクセス</a></li>
+                    <li><a href="information.html">受験生の皆様へ</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <p class="footer-nav-title">Contact</p>
+                <ul class="footer-nav-list">
+                    <li><a href= https://forms.gle/LneNkaXuGr7gcE9L6 >お問い合わせ</a></li>
+                    <li><a href="#">資料請求</a></li>
+                    <li><a href="#news">オープンキャンパス</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; Kiuchi University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Hamburger + mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+</script>
+</body>
+</html>
