@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース — 木内大学</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="news.css">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <div class="logo-emblem">
+                <img src="images/Logo.png" alt="木内大学">
+            </div>
+            <div class="logo-text-wrap">
+                <span class="logo-ja">木内大学</span>
+                <span class="logo-en">Kiuchi University</span>
+            </div>
+        </a>
+
+        <nav class="global-nav" id="global-nav">
+            <ul>
+                <li><a href="index.html#home">ホーム</a></li>
+                <li><a href="news.html">ニュース</a></li>
+                <li><a href="index.html#access">アクセス</a></li>
+                <li><a href="information.html" class="nav-cta">受験生の皆様へ</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ========== MOBILE NAV ========== -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+    <ul class="mobile-nav-list">
+        <li><a href="index.html#home">ホーム <span>→</span></a></li>
+        <li><a href="news.html">ニュース <span>→</span></a></li>
+        <li><a href="index.html#access">アクセス <span>→</span></a></li>
+        <li><a href="information.html">受験生の皆様へ <span>→</span></a></li>
+    </ul>
+    <p class="mobile-nav-footer">© Kiuchi University</p>
+</div>
+
+<main class="news-page">
+
+    <!-- ── Page title ── -->
+    <div class="news-page-header">
+        <span class="section-label">Latest</span>
+        <h1 class="section-title">N E W S</h1>
+        <p>木内大学からの最新情報</p>
+    </div>
+
+    <!-- ── Scroll carousel stage ── -->
+    <section class="news-scroll-stage" id="news-stage" aria-label="ニュース一覧">
+
+        <div class="news-scroll-sticky" id="news-sticky">
+
+            <!-- Cards viewport -->
+            <div class="news-cards-viewport" id="cards-viewport">
+                <!-- Cards are injected by JS -->
+            </div>
+
+            <!-- Navigation arrows -->
+            <div class="carousel-nav" aria-label="ナビゲーション">
+                <button class="carousel-nav-btn" id="nav-up" aria-label="前のニュース">↑</button>
+                <button class="carousel-nav-btn" id="nav-down" aria-label="次のニュース">↓</button>
+            </div>
+
+            <!-- Counter -->
+            <div class="carousel-counter" id="carousel-counter">01 / 05</div>
+
+            <!-- Dots -->
+            <div class="carousel-dots" id="carousel-dots"></div>
+
+            <!-- Scroll hint (fades out after first scroll) -->
+            <div class="scroll-hint" id="scroll-hint">
+                <span>Scroll</span>
+                <div class="scroll-hint-line"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ── Archive grid ── -->
+    <section class="news-archive">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Archive</span>
+                <h2 class="section-title">A L L _ N E W S</h2>
+                <div class="section-rule"></div>
+            </div>
+            <div class="archive-grid" id="archive-grid">
+                <!-- Injected by JS -->
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ========== モーダル ========== -->
+<div id="news-modal" class="news-modal" aria-hidden="true">
+    <div class="news-modal-overlay" data-close></div>
+    <div class="news-modal-content" role="dialog" aria-modal="true">
+        <button class="news-modal-close" data-close aria-label="閉じる">&times;</button>
+        <div class="news-modal-meta">
+            <time id="modal-date"></time>
+            <span id="modal-tag" class="card-tag"></span>
+        </div>
+        <h2 id="modal-title"></h2>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <p class="footer-logo-ja">木内大学</p>
+                <p class="footer-logo-en">Kiuchi University</p>
+                <p class="footer-tagline">知識と創造の拠点として、<br>未来を拓く人材を育成します。<br><br>本ホームページには生成AIを使用しています。</p>
+            </div>
+            <div>
+                <p class="footer-nav-title">Navigation</p>
+                <ul class="footer-nav-list">
+                    <li><a href="index.html#home">ホーム</a></li>
+                    <li><a href="news.html">ニュース</a></li>
+                    <li><a href="index.html#access">アクセス</a></li>
+                    <li><a href="information.html">受験生の皆様へ</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="footer-nav-title">Contact</p>
+                <ul class="footer-nav-list">
+                    <li><a href="https://forms.gle/LneNkaXuGr7gcE9L6">お問い合わせ</a></li>
+                    <li><a href="#">資料請求</a></li>
+                    <li><a href="#">オープンキャンパス</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; Kiuchi University. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// @ts-nocheck
+/* ============================================================
+   News data
+   — real articles first, then placeholders for demo
+============================================================ */
+const NEWS_ITEMS = [
+    {
+        id: 2,
+        date: '2026.06.11',
+        tag: '入学者選抜',
+        title: '秋入学のための選抜試験',
+        excerpt: '木内大学は、幅広い学生を獲得するため、秋入学を実施しています。本年度の会場は附高祭です。受験料は無料。ぜひお立ち寄りください。',
+        photo: null,
+        link: {
+            type: 'modal',
+            detail: '<p>木内大学は、幅広い学生を獲得するため、秋入学を実施しています。</p><p>日時：8月◯日</p><p>場所：◯◯</p>'
+        }
+    },
+    {
+        id: 3,
+        date: '2026.05.01',
+        tag: 'お知らせ',
+        title: '木内大学 創立１周年記念式典を開催',
+        excerpt: '学長より全在学生・教職員へのメッセージとともに、記念式典の模様をお伝えします。1年間の歩みを振り返り、さらなる飛躍を誓いました。',
+        photo: null,
+        link: {
+            type: '',
+            detail: ''
+        }
+    },
+    {
+        id: 4,
+        date: '2026.03.20',
+        tag: '入試要項',
+        title: '2027年度入試要項を公開しました',
+        excerpt: '来年度の入学試験に関する要項を公式サイトに掲載しました。出願日程・選抜方法の詳細は受験生の皆様へのページをご確認ください。',
+        photo: null,
+        link: { type: 'url', url: 'information.html' }
+    },
+];
+
+/* ============================================================
+   State
+============================================================ */
+let currentIndex = 0;
+const total = NEWS_ITEMS.length;
+
+/* ============================================================
+   DOM helpers
+============================================================ */
+const viewport   = document.getElementById('cards-viewport');
+const dotsWrap   = document.getElementById('carousel-dots');
+const counter    = document.getElementById('carousel-counter');
+const btnUp      = document.getElementById('nav-up');
+const btnDown    = document.getElementById('nav-down');
+const scrollHint = document.getElementById('scroll-hint');
+const stage      = document.getElementById('news-stage');
+
+/* ============================================================
+   Photo placeholder SVG
+============================================================ */
+function placeholderSVG() {
+    return `
+        <div class="card-photo-placeholder">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Photo</span>
+        </div>`;
+}
+
+/* ============================================================
+   Build cards (once)
+============================================================ */
+function buildCards() {
+    NEWS_ITEMS.forEach((item, i) => {
+        const card = document.createElement('article');
+        card.className = 'news-card';
+        card.dataset.index = i;
+        card.setAttribute('role', 'article');
+        card.setAttribute('aria-label', item.title);
+
+         // ★ ここでリンクの種類を判定
+        const linkHTML = (item.link && item.link.type === 'url')
+            ? `<a href="${item.link.url}" class="card-link" target="_blank" rel="noopener noreferrer">詳細 →</a>`
+            : `<a href="#" class="card-link" data-modal-index="${i}">詳細 →</a>`;
+
+        card.innerHTML = `
+            <div class="card-photo">
+                ${item.photo
+                    ? `<img src="${item.photo}" alt="${item.title}" loading="lazy">`
+                    : placeholderSVG()}
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <time class="card-date">${item.date}</time>
+                    <span class="card-tag">${item.tag}</span>
+                </div>
+                <h2 class="card-title">${item.title}</h2>
+                <p class="card-excerpt">${item.excerpt}</p>
+                ${linkHTML}
+            </div>`;
+
+        viewport.appendChild(card);
+    });
+}
+
+/* ============================================================
+   Build dots
+============================================================ */
+function buildDots() {
+    NEWS_ITEMS.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `ニュース ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+    });
+}
+
+/* ============================================================
+   Update display for a given active index
+============================================================ */
+function updateCards(idx) {
+    const cards = viewport.querySelectorAll('.news-card');
+
+    cards.forEach((card, i) => {
+        card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+
+        const diff = i - idx;
+        if (diff === 0)       card.classList.add('is-active');
+        else if (diff === -1) card.classList.add('is-prev');
+        else if (diff === 1)  card.classList.add('is-next');
+        else                  card.classList.add('is-hidden');
+    });
+
+    /* Dots */
+    dotsWrap.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+    });
+
+    /* Counter */
+    const pad = n => String(n).padStart(2, '0');
+    counter.textContent = `${pad(idx + 1)} / ${pad(total)}`;
+
+    /* Buttons */
+    btnUp.disabled   = idx === 0;
+    btnDown.disabled = idx === total - 1;
+}
+
+/* ============================================================
+   Navigate
+============================================================ */
+function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    currentIndex = idx;
+    updateCards(currentIndex);
+}
+
+function goNext() { goTo(currentIndex + 1); }
+function goPrev() { goTo(currentIndex - 1); }
+
+/* ============================================================
+   Button listeners
+============================================================ */
+btnUp.addEventListener('click',   goPrev);
+btnDown.addEventListener('click', goNext);
+
+/* ============================================================
+   Keyboard navigation
+============================================================ */
+document.addEventListener('keydown', e => {
+    // Only intercept when sticky panel is in view
+    const rect = stage.getBoundingClientRect();
+    const inView = rect.top <= 0 && rect.bottom >= window.innerHeight;
+    if (!inView) return;
+
+    if (e.key === 'ArrowUp'   || e.key === 'ArrowLeft')  { e.preventDefault(); goPrev(); }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
+});
+
+/* ============================================================
+   Scroll-driven navigation
+   — divide the stage height into N equal zones
+   — each zone maps to one news item
+============================================================ */
+
+// We set the stage height dynamically so each "page" = 100vh
+function setStageHeight() {
+    // (total items) × 100vh gives natural scroll travel
+    stage.style.height = `${total * 100}vh`;
+}
+
+let lastScrollY = -1;
+let ticking = false;
+
+function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+        const rect  = stage.getBoundingClientRect();
+        const stageTop    = -rect.top;                      // how far we've scrolled into the stage
+        const stageHeight = rect.height - window.innerHeight; // scrollable distance inside stage
+
+        if (stageTop >= 0 && stageTop <= stageHeight) {
+            // Normalised 0→1 through the stage
+            const progress = stageTop / stageHeight;
+            const newIndex = Math.min(
+                total - 1,
+                Math.floor(progress * total + 0.5)   // round to nearest card
+            );
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateCards(currentIndex);
+            }
+
+            // Hide scroll hint after first scroll
+            if (stageTop > 20) {
+                scrollHint.style.opacity = '0';
+                scrollHint.style.pointerEvents = 'none';
+            }
+        }
+
+        ticking = false;
+    });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', setStageHeight);
+
+/* ============================================================
+   Touch / swipe support
+============================================================ */
+let touchStartY = 0;
+let touchStartX = 0;
+
+document.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+    // Only handle swipes when the sticky panel fills the screen
+    const rect = stage.getBoundingClientRect();
+    const inView = rect.top <= 0 && rect.bottom >= window.innerHeight;
+    if (!inView) return;
+
+    const dy = touchStartY - e.changedTouches[0].clientY;
+    const dx = touchStartX - e.changedTouches[0].clientX;
+
+    // Require predominantly vertical swipe of at least 40px
+    if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 40) {
+        dy > 0 ? goNext() : goPrev();
+    }
+}, { passive: true });
+
+/* ============================================================
+   Build archive grid
+============================================================ */
+function buildArchive() {
+    const grid = document.getElementById('archive-grid');
+    NEWS_ITEMS.forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'archive-card';
+        card.innerHTML = `
+            <time class="card-date">${item.date}</time>
+            <span class="card-tag">${item.tag}</span>
+            <h3 class="archive-card-title">${item.title}</h3>
+            <p class="archive-card-excerpt">${item.excerpt}</p>`;
+        grid.appendChild(card);
+    });
+}
+
+/* ============================================================
+   Header scroll effect
+============================================================ */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ============================================================
+   Hamburger menu
+============================================================ */
+const hamburger  = document.getElementById('hamburger');
+const mobileNav  = document.getElementById('mobile-nav');
+
+hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+});
+
+mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+/* ============================================================
+   News detail modal
+============================================================ */
+const newsModal   = document.getElementById('news-modal');
+const modalDate   = document.getElementById('modal-date');
+const modalTag    = document.getElementById('modal-tag');
+const modalTitle  = document.getElementById('modal-title');
+const modalBody   = document.getElementById('modal-body');
+
+function openNewsModal(item) {
+    modalDate.textContent  = item.date;
+    modalTag.textContent   = item.tag;
+    modalTitle.textContent = item.title;
+    modalBody.innerHTML    = item.link.detail || item.excerpt;
+
+    newsModal.classList.add('active');
+    newsModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeNewsModal() {
+    newsModal.classList.remove('active');
+    newsModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+newsModal.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', closeNewsModal);
+});
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && newsModal.classList.contains('active')) {
+        closeNewsModal();
+    }
+});
+
+// 「詳細 →」クリック時の処理(イベント委譲)
+viewport.addEventListener('click', e => {
+    const link = e.target.closest('[data-modal-index]');
+    if (!link) return;
+    e.preventDefault();
+    const idx = Number(link.dataset.modalIndex);
+    openNewsModal(NEWS_ITEMS[idx]);
+});
+
+/* ============================================================
+   Init
+============================================================ */
+setStageHeight();
+buildCards();
+buildDots();
+buildArchive();
+updateCards(0);
+</script>
+</body>
+</html>
